@@ -17,10 +17,10 @@ public class login extends HttpServlet
 		try
 		{	
 			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
-			Connection con = DriverManager.getConnection("Jdbc:Odbc:abc");
+			Connection con = DriverManager.getConnection("Jdbc:Odbc:sbb"); //NAME OF DATA SOURCE
 			Statement stmt = con.createStatement();
 			stmt.executeUpdate(" insert into login(uname,password) values('"+name+"','"+pass+"')");
-			pw.println(" Data Inserted Biach !");
+			pw.println(" Data Inserted Biach !"); //NAME OF THE TABLE WITH THE COLUMN NAMES
 			con.close();
 		}
 		
