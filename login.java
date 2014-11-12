@@ -19,7 +19,7 @@ public class login extends HttpServlet
 			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
 			Connection con = DriverManager.getConnection("Jdbc:Odbc:sbb"); //NAME OF DATA SOURCE
 			Statement stmt = con.createStatement();
-			stmt.executeUpdate(" insert into login(uname,password) values('"+name+"','"+pass+"')");
+			stmt.executeUpdate(" insert into login(name,lastname) values('"+name+"','"+pass+"')");
 			pw.println(" Data Inserted Biach !"); //NAME OF THE TABLE WITH THE COLUMN NAMES
 			con.close();
 		}

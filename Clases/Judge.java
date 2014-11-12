@@ -1,0 +1,3 @@
+class Judge { 
+	int initService;
+}
