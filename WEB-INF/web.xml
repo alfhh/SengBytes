@@ -13,11 +13,22 @@
     <servlet>
      <servlet-name>Editores</servlet-name>
      <servlet-class>controles.Editores</servlet-class>
- </servlet>
+    </servlet>
  
- <servlet-mapping>
-     <servlet-name>Editores</servlet-name>
-     <url-pattern>/EditoresJefe</url-pattern>
- </servlet-mapping>    
+     <servlet-mapping>
+         <servlet-name>Editores</servlet-name>
+         <url-pattern>/EditoresJefe</url-pattern>
+     </servlet-mapping>    
 
+    
+    <servlet>
+     <servlet-name>InterfazNuevoUsuario</servlet-name>
+     <servlet-class>interfaces.AltaUsuario</servlet-class>
+    </servlet>
+ 
+     <servlet-mapping>
+         <servlet-name>InterfazNuevoUsuario</servlet-name>
+         <url-pattern>/RegistrarUsuario</url-pattern>
+     </servlet-mapping> 
+    
 </web-app>
