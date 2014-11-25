@@ -18,11 +18,8 @@ public class ControlAltaUsuario
                             String tarjeta, String suscrip, String mail,
                             String passwd) {
 
-        //try {
             sus.create(nom, lastn, address, tarjeta, suscrip, mail, passwd);
-        //}catch (SQLException e) {   }
-
-        return true;
+            return true;
     }
 
 }

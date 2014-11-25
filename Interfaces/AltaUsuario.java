@@ -79,9 +79,10 @@ public class AltaUsuario extends HttpServlet
 
    /**
     * Method used to validate the info sent by the user
-    *
+    * The flag is used to know if the insertion was done
     */
   public void validateData() {
+    boolean flag = false;
     ca = new ControlAltaUsuario();
 
     // Strings from the GET method
@@ -93,7 +94,7 @@ public class AltaUsuario extends HttpServlet
     String mail = request.getParameter("mail");
     String passwd = request.getParameter("contrasena");
 
-    ca.insert(nom, lastn, address, tarjeta, suscripcion, mail, passwd);
+    flag = ca.insert(nom, lastn, address, tarjeta, suscripcion, mail, passwd);
 
     out.println("<br><br><hr>" + new Date().toString() );
     out.println("</body>");
