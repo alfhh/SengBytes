@@ -59,9 +59,8 @@ public class InterfazJuez extends HttpServlet
     */
   public void loadForm() {
 
-        out.println("<form data-abide method=\"GET\" action=\"NuevoArticulo\">");
+        out.println("<form data-abide method=\"GET\" action=\"IntJuez\">");
         out.println("<p> ID Autor <input required type=\"text\" name=\"idAutor\" size=\"15\"></p>");
-        out.println("<p> Contenido <input  type=\"text\" name=\"direccion\" ></p>");
         out.println("<input type=\"hidden\" name=\"check\" value=\"validate\"/>");
         out.println("<input type=\"submit\" name=\"submit\" value=\"Submit\" />");
         out.println("</form>");

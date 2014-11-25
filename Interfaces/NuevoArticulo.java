@@ -61,8 +61,8 @@ public class NuevoArticulo extends HttpServlet
 
         out.println("<form data-abide method=\"GET\" action=\"NuevoArticulo\">");
         out.println("<p> ID Autor <input required type=\"text\" name=\"idAutor\" size=\"15\"></p>");
-        out.println("<p> ID Revista <input  type=\"text\" name=\"apellido\" size=\"15\"></p>");
-        out.println("<p> Contenido <input  type=\"text\" name=\"direccion\" ></p>");
+        out.println("<p> ID Revista <input  type=\"text\" name=\"idRevista\" size=\"15\"></p>");
+        out.println("<p> Contenido <input  type=\"text\" name=\"contenido\" ></p>");
         out.println("<input type=\"hidden\" name=\"check\" value=\"validate\"/>");
         out.println("<input type=\"submit\" name=\"submit\" value=\"Submit\" />");
         out.println("</form>");
@@ -80,16 +80,9 @@ public class NuevoArticulo extends HttpServlet
     //controlU = new ControlAltaUsuario();
 
     // Strings from the GET method
-    String nom = request.getParameter("nombre");
-    String lastn = request.getParameter("apellido");
-    String address = request.getParameter("direccion");
-    String tarjeta = request.getParameter("tarjeta");
-    String suscripcion = request.getParameter("suscripcion");
-    String mail = request.getParameter("mail");
-    String passwd = request.getParameter("contrasena");
-
-    int itarjeta = Integer.parseInt(tarjeta);
-    int isuscripcion = Integer.parseInt(suscripcion);
+    int idAutor = Integer.parseInt(request.getParameter("idAutor"));
+    int idRevista = Integer.parseInt(request.getParameter("idRevista"));
+    String contenido = request.getParameter("contenido");
 
     //flag = controlU.insert(nom, lastn, address, itarjeta, isuscripcion, mail, passwd);
 

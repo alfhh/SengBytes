@@ -39,7 +39,7 @@ public class Judge extends HttpServlet {
         	Date date = new Date();
 			String ndate = "'"+(dateFormat.format(date)).toString()+"'";
                    
-            query = "INSERT INTO sengbytes.autor (InicioServicio, IDautor)"
+            query = "INSERT INTO sengbytes.juez (InicioServicio, IDautor)"
                 +"VALUES ("+ndate+","+idautor+")";
             st.executeUpdate(query);
        }catch (SQLException e) {
