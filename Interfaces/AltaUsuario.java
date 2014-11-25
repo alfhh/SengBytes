@@ -28,7 +28,8 @@ public class AltaUsuario extends HttpServlet
     public void destroy() {    }
 
     /** Handles the HTTP GET method. */
-    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    public void doGet(HttpServletRequest req, 
+                        HttpServletResponse resp) throws IOException {
     respuesta = resp;
     request = req;
     respuesta.setContentType("text/html");
@@ -91,7 +92,8 @@ public class AltaUsuario extends HttpServlet
     String suscripcion = request.getParameter("suscripcion");
     String mail = request.getParameter("mail");
     String passwd = request.getParameter("contrasena");
-    String inicioSuscripcion = (dateFormat.format(date)).toString();
+
+    ca.insert(nom, lastn, address, tarjeta, suscripcion, mail, passwd);
 
     out.println("<br><br><hr>" + new Date().toString() );
     out.println("</body>");
