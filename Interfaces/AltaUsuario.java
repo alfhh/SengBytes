@@ -12,7 +12,7 @@ import controles.ControlAltaUsuario; // Conection to the control
 
 public class AltaUsuario extends HttpServlet
 {
-    ControlAltaUsuario ca;
+    ControlAltaUsuario controlU;
     HttpServletResponse respuesta;
     HttpServletRequest request;
     PrintWriter out;
@@ -83,7 +83,7 @@ public class AltaUsuario extends HttpServlet
     */
   public void validateData() {
     boolean flag = false;
-    ca = new ControlAltaUsuario();
+    controlU = new ControlAltaUsuario();
 
     // Strings from the GET method
     String nom = request.getParameter("nombre");
@@ -94,7 +94,9 @@ public class AltaUsuario extends HttpServlet
     String mail = request.getParameter("mail");
     String passwd = request.getParameter("contrasena");
 
-    flag = ca.insert(nom, lastn, address, tarjeta, suscripcion, mail, passwd);
+
+    out.println("<h1>Llegue</h1>");
+    flag = controlU.insert(nom, lastn, address, tarjeta, suscripcion, mail, passwd);
 
     out.println("<br><br><hr>" + new Date().toString() );
     out.println("</body>");

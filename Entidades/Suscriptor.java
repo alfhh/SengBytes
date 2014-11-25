@@ -28,6 +28,7 @@ public class Suscriptor extends HttpServlet {
         try {
             conn = DriverManager.getConnection("jdbc:mysql://localhost/"+
                                 "SengBytes?user=root&password=r00t");
+            st = conn.createStatement();
         } catch (SQLException sq1){
         }
     }// End createConnection()
@@ -36,10 +37,15 @@ public class Suscriptor extends HttpServlet {
                             String tarjeta, String suscrip, String mail,
                             String passwd){
         try {
-            query = "INSERT INTO suscriptor (Nom, LastN, Address, Tarjeta, Suscription, Mail, Passwd, InicioSuscripcion, TiempoRestante)"
-                +"VALUES ("+nom+", "+lastn+", "+address+", "+tarjeta+", "+suscrip+", "+mail+", "+passwd+")";
+          String a = "'2014-09-09'";
+            query = "INSERT INTO sengbytes.suscriptor (Nom, LastN, Address, Tarjeta, Suscription, Mail, Passwd, InicioSuscripcion, TiempoRestante)"
+                +"VALUES ('"+nom+"', '"+lastn+"', '"+address+"', 1384545, 1, '"+mail+"', '"+passwd+"', "+a+", "+a+")";
+            System.out.println(query);
             st.executeUpdate(query);
-       }catch (SQLException e) {}
+       }catch (SQLException e) {
+        System.out.println("Ex: " + e);
+       }
+          
     }//end create()
 
 }
