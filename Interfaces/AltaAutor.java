@@ -8,11 +8,11 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-//import controles.ControlAltaAutor; // Conection to the control
+import controles.ControlAltaAutor; // Conection to the control
 
 public class AltaAutor extends HttpServlet
 {
-    //ControlAltaAutor controlU;
+    ControlAltaAutor controlU;
     HttpServletResponse respuesta;
     HttpServletRequest request;
     PrintWriter out;
@@ -63,7 +63,6 @@ public class AltaAutor extends HttpServlet
 
         out.println("<form data-abide method=\"GET\" action=\"RegistrarAutor\">");
         out.println("<p> Id del suscriptor <input required type=\"text\" name=\"idsuscriptor\" size=\"11\"></p>");
-	out.println("<p> Id del suscriptor <input required type=\"text\" name=\"fecha\" size=\"11\"></p>");
         out.println("<input type=\"hidden\" name=\"check\" value=\"validate\"/>");
         out.println("<input type=\"submit\" name=\"submit\" value=\"Submit\" />");
         out.println("</form>");
@@ -81,13 +80,13 @@ public class AltaAutor extends HttpServlet
    // controlU = new ControlAltaAutor();
 
     // Strings from the GET method
-    String idsus = request.getParameter("idsuscriptor");
-    String date = request.getParameter("fecha");
+    String idsusstring = request.getParameter("idsuscriptor");
+    int idsus = Integer.parseInt(idsusstring);
 
 
 
     out.println("<h1>Llegue</h1>");
-    //flag = controlU.insert(nom, lastn, address, tarjeta, suscripcion, mail, passwd);
+    flag = controlU.insert(idsus);
 
     out.println("<br><br><hr>" + new Date().toString() );
     out.println("</body>");
