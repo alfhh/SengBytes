@@ -10,14 +10,14 @@ import java.sql.*;
 import javax.sql.*;
 
 
-public class Publication extends HttpServlet {
+public class Revista extends HttpServlet {
     Connection          conn = null;
     Statement           st = null;
     ResultSet           rs = null;
     ResultSetMetaData   rmd = null;
     String              query = null;
 
-    public Publication(){
+    public Revista(){
         try{
             Class.forName("com.mysql.jdbc.Driver").newInstance();
         } catch (InstantiationException ie){  
@@ -33,14 +33,14 @@ public class Publication extends HttpServlet {
         }
     }// End createConnection()
 
-    public void create(int idsuscriptor){
+    public void create(){
         try {
         	DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         	Date date = new Date();
 			String ndate = "'"+(dateFormat.format(date)).toString()+"'";
                    
-            query = "INSERT INTO sengbytes.autor (LDofP, IdSuscriptor)"
-                +"VALUES ("+ndate+","+idsuscriptor+")";
+            query = "INSERT INTO sengbytes.autor (FechaPub)"
+                +"VALUES ("+ndate+")";
             st.executeUpdate(query);
        }catch (SQLException e) {
         System.out.println("Ex: " + e);
