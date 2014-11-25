@@ -15,7 +15,7 @@ public class ControlAltaUsuario
     * of the insertion to the DB.
     */
     public boolean insert(String nom, String lastn, String address,
-                            String tarjeta, String suscrip, String mail,
+                            int tarjeta, int suscrip, String mail,
                             String passwd) {
 
             sus.create(nom, lastn, address, tarjeta, suscrip, mail, passwd);

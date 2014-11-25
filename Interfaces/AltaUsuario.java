@@ -16,8 +16,6 @@ public class AltaUsuario extends HttpServlet
     HttpServletResponse respuesta;
     HttpServletRequest request;
     PrintWriter out;
-    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-    Date date = new Date();
 
     /** Initializes the servlet. */
     public void init(ServletConfig config) throws ServletException {
@@ -38,6 +36,7 @@ public class AltaUsuario extends HttpServlet
         out.println("<html>");
         out.println("<head>");
         out.println("<title>Nuevo Suscriptor</title>");
+        //out.println("<link href=\"css/bootstrap.css\" rel=\"stylesheet\">");
         out.println("<style type=\"text/css\">");
         out.println("h1{text-align:center; background:#dddddd;color:#000000}");
         out.println("body{font-family:sans-serif, arial; font-weight:normal}");
@@ -94,9 +93,16 @@ public class AltaUsuario extends HttpServlet
     String mail = request.getParameter("mail");
     String passwd = request.getParameter("contrasena");
 
+    int itarjeta = Integer.parseInt(tarjeta);
+    int isuscripcion = Integer.parseInt(suscripcion);
 
-    out.println("<h1>Llegue</h1>");
-    flag = controlU.insert(nom, lastn, address, tarjeta, suscripcion, mail, passwd);
+    flag = controlU.insert(nom, lastn, address, itarjeta, isuscripcion, mail, passwd);
+
+    if(flag){
+        out.println("<h1>Suscriptor agregado</h1>");
+        out.println("<a href=\"/SengBytes\">Regresar..</a>");
+    }
+
 
     out.println("<br><br><hr>" + new Date().toString() );
     out.println("</body>");

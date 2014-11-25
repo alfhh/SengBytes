@@ -34,12 +34,21 @@ public class Suscriptor extends HttpServlet {
     }// End createConnection()
 
     public void create(String nom, String lastn, String address,
-                            String tarjeta, String suscrip, String mail,
+                            int tarjeta, int suscrip, String mail,
                             String passwd){
         try {
-          String a = "'2014-09-09'";
+
+            Calendar c = Calendar.getInstance();
+            c.add(Calendar.YEAR, 1);
+            Date future = c.getTime();
+          DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+           Date date = new Date();
+
+          String ndate = "'"+(dateFormat.format(date)).toString()+"'";
+          String fdate = "'"+(dateFormat.format(future)).toString()+"'";
+
             query = "INSERT INTO sengbytes.suscriptor (Nom, LastN, Address, Tarjeta, Suscription, Mail, Passwd, InicioSuscripcion, TiempoRestante)"
-                +"VALUES ('"+nom+"', '"+lastn+"', '"+address+"', 1384545, 1, '"+mail+"', '"+passwd+"', "+a+", "+a+")";
+                +"VALUES ('"+nom+"', '"+lastn+"', '"+address+"', "+tarjeta+", "+suscrip+", '"+mail+"', '"+passwd+"', "+ndate+", "+fdate+")";
             System.out.println(query);
             st.executeUpdate(query);
        }catch (SQLException e) {
