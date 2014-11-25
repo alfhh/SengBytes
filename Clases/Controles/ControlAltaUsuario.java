@@ -1,15 +1,14 @@
-package interfaces;
+package controles;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.sql.*;
 import javax.sql.*;
 import java.util.Date;
-import controles.ControlAltaUsuario;
+//import entidades.Suscriptor;
 
-public class AltaUsuario extends HttpServlet
+public class ControlAltaUsuario extends HttpServlet
 {
-    //ControlAltaUsuario ca;
     Connection          conn = null;
     Statement           st = null;
     ResultSet           rs = null;
@@ -81,20 +80,8 @@ public class AltaUsuario extends HttpServlet
         out.println("</style>");
         out.println("</head>");
         out.println("<body>");
-        out.println("<h1>Nuevo Suscriptor</h1>");
+        out.println("<h1>Test de nuevo suscriptor</h1>");
         
-        // FORM USED TO SEND DATA
-        out.println("<form data-abide method=\"GET\" action=\"/SengBytes/RegistrarUsuario/Nuevo\">");
-        out.println("<p> Nombre <input required type=\"text\" name=\"nombre\" size=\"15\"></p>");
-        out.println("<p> Apellido <input required type=\"text\" name=\"apellido\" size=\"15\"></p>");
-        out.println("<p> Direccion <input required type=\"text\" name=\"direccion\" size=\"15\"></p>");
-        out.println("<p> Tarjeta <input required type=\"text\" name=\"tarjeta\" size=\"15\"></p>");
-        out.println("<p> Suscripcion <input required type=\"text\" name=\"suscripcion\" size=\"15\"></p>");
-        out.println("<p> Mail <input required type=\"text\" name=\"mail\" size=\"15\"></p>");
-        out.println("<p> Contrasena <input required type=\"text\" name=\"contrasena\" size=\"15\"></p>");
-        out.println("<p> Fecha <input required type=\"text\" name=\"fecha\" size=\"15\"></p>");
-        out.println("<input type=\"submit\" name=\"submit\" value=\"Submit\" />");
-        out.println("</form>");
         
         createConnection( out );
 //        try {
@@ -124,8 +111,6 @@ public class AltaUsuario extends HttpServlet
     public String getServletInfo() {
         return "Short description";
     } //end getServletInfo()
-	
+
+
 }
-			
-			
-			

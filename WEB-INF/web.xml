@@ -29,6 +29,17 @@
      <servlet-mapping>
          <servlet-name>InterfazNuevoUsuario</servlet-name>
          <url-pattern>/RegistrarUsuario</url-pattern>
-     </servlet-mapping> 
+     </servlet-mapping>
+    
+    <servlet>
+     <servlet-name>ControlNuevoUsuario</servlet-name>
+     <servlet-class>controles.ControlAltaUsuario</servlet-class>
+    </servlet>
+ 
+     <servlet-mapping>
+         <servlet-name>ControlNuevoUsuario</servlet-name>
+         <url-pattern>/RegistrarUsuario/Nuevo</url-pattern>
+     </servlet-mapping>
+    
     
 </web-app>
