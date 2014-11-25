@@ -8,11 +8,11 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-//import controles.ControlAltaUsuario; // Conection to the control
+import controles.ControlNuevoArticulo; // Conection to the control
 
 public class NuevoArticulo extends HttpServlet
 {
-    //ControlAltaUsuario controlU;
+    ControlNuevoArticulo controlU;
     HttpServletResponse respuesta;
     HttpServletRequest request;
     PrintWriter out;
@@ -77,14 +77,14 @@ public class NuevoArticulo extends HttpServlet
     */
   public void validateData() {
     boolean flag = false;
-    //controlU = new ControlAltaUsuario();
+    controlU = new ControlNuevoArticulo();
 
     // Strings from the GET method
     int idAutor = Integer.parseInt(request.getParameter("idAutor"));
     int idRevista = Integer.parseInt(request.getParameter("idRevista"));
     String contenido = request.getParameter("contenido");
 
-    //flag = controlU.insert(nom, lastn, address, itarjeta, isuscripcion, mail, passwd);
+    flag = controlU.insert(idAutor, idRevista, contenido);
 
     if(flag){
         out.println("<h1>Articulo agregado</h1>");
