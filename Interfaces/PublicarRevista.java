@@ -8,11 +8,11 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import controles.ControlAgregarArticulo; // Conection to the control
+import controles.ControlPublicarRevista; // Conection to the control
 
 public class AltaAutor extends HttpServlet
 {
-    ControlAgregarArticulo controlU;
+    ControlPublicarRevista controlU;
     HttpServletResponse respuesta;
     HttpServletRequest request;
     PrintWriter out;
@@ -37,14 +37,14 @@ public class AltaAutor extends HttpServlet
 
         out.println("<html>");
         out.println("<head>");
-        out.println("<title>Agregar Articulo</title>");
+        out.println("<title>Publicar Revista</title>");
         out.println("<style type=\"text/css\">");
         out.println("h1{text-align:center; background:#dddddd;color:#000000}");
         out.println("body{font-family:sans-serif, arial; font-weight:normal}");
         out.println("</style>");
         out.println("</head>");
         out.println("<body>");
-        out.println("<h1>Adicion de un articulo a una publicacion</h1>");
+        out.println("<h1>Publicacion de una revista</h1>");
 
     String check = req.getParameter("check");
     if (check == null) {
@@ -61,10 +61,8 @@ public class AltaAutor extends HttpServlet
     */
   public void loadForm() {
 
-        out.println("<form data-abide method=\"GET\" action=\"AgregarArticulo\">");
-        out.println("<p> Id del Articulo <input required type=\"text\" name=\"idarticulo\" size=\"11\"></p>");
-        out.println("<p> Id de la Publicacion <input required type=\"text\" name=\"idpublicacion\" size=\"11\"></p>");
-        out.println("<p> Id del Juez <input required type=\"text\" name=\"idjuez\" size=\"11\"></p>");
+        out.println("<form data-abide method=\"GET\" action=\"PublicarRevista\">");
+        out.println("<p> Id del Revista <input required type=\"text\" name=\"idjuez\" size=\"11\"></p>");
         out.println("<input type=\"hidden\" name=\"check\" value=\"validate\"/>");
         out.println("<input type=\"submit\" name=\"submit\" value=\"Submit\" />");
         out.println("</form>");
@@ -79,16 +77,16 @@ public class AltaAutor extends HttpServlet
     */
   public void validateData() {
     boolean flag = false;
-   controlU = new ControlAgregarArticulo();
+   controlU = new ControlPublicarRevista();
 
     // Strings from the GET method
-    String idartstring = request.getParameter("idarticulo");
-    int idart = Integer.parseInt(idartstring);
+    String idrevstring = request.getParameter("idrevista");
+    int idrev = Integer.parseInt(idrevstring);
 
-    flag = controlU.insert(idart);
+    flag = controlU.insert(idrev);
 
     if(flag){
-        out.println("<h1>Articulo agregado</h1>");
+        out.println("<h1>Revista publicada</h1>");
         out.println("<a href=\"/SengBytes\">Regresar..</a>");
     }
 
