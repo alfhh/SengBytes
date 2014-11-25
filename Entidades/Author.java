@@ -39,9 +39,8 @@ public class Author extends HttpServlet {
         	Date date = new Date();
 			String ndate = "'"+(dateFormat.format(date)).toString()+"'";
                    
-            query = "INSERT INTO sengbytes.suscriptor (idsuscriptor, InicioSuscripcion)"
-                +"VALUES ('"+idsuscriptor+"','"+ndate+"')";
-            System.out.println(query);
+            query = "INSERT INTO sengbytes.autor (LDofP, IdSuscriptor)"
+                +"VALUES ("+ndate+","+idsuscriptor+")";
             st.executeUpdate(query);
        }catch (SQLException e) {
         System.out.println("Ex: " + e);

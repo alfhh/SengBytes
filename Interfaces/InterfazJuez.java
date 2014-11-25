@@ -8,16 +8,14 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import controles.ControlAltaAutor; // Conection to the control
+//import controles.ControlAltaUsuario; // Conection to the control
 
-public class AltaAutor extends HttpServlet
+public class InterfazJuez extends HttpServlet
 {
-    ControlAltaAutor controlU;
+    //ControlAltaUsuario controlU;
     HttpServletResponse respuesta;
     HttpServletRequest request;
     PrintWriter out;
-    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-    Date date = new Date();
 
     /** Initializes the servlet. */
     public void init(ServletConfig config) throws ServletException {
@@ -37,14 +35,14 @@ public class AltaAutor extends HttpServlet
 
         out.println("<html>");
         out.println("<head>");
-        out.println("<title>Nuevo Autor</title>");
+        out.println("<title>Juez</title>");
         out.println("<style type=\"text/css\">");
         out.println("h1{text-align:center; background:#dddddd;color:#000000}");
         out.println("body{font-family:sans-serif, arial; font-weight:normal}");
         out.println("</style>");
         out.println("</head>");
         out.println("<body>");
-        out.println("<h1>Registro de nuevo Autor</h1>");
+        out.println("<h1>Ascender a Juez</h1>");
 
     String check = req.getParameter("check");
     if (check == null) {
@@ -61,8 +59,10 @@ public class AltaAutor extends HttpServlet
     */
   public void loadForm() {
 
-        out.println("<form data-abide method=\"GET\" action=\"RegistrarAutor\">");
-        out.println("<p> Id del suscriptor <input required type=\"text\" name=\"idsuscriptor\" size=\"11\"></p>");
+        out.println("<form data-abide method=\"GET\" action=\"NuevoArticulo\">");
+        out.println("<p> ID Autor <input required type=\"text\" name=\"idAutor\" size=\"15\"></p>");
+        out.println("<p> ID Revista <input  type=\"text\" name=\"apellido\" size=\"15\"></p>");
+        out.println("<p> Contenido <input  type=\"text\" name=\"direccion\" ></p>");
         out.println("<input type=\"hidden\" name=\"check\" value=\"validate\"/>");
         out.println("<input type=\"submit\" name=\"submit\" value=\"Submit\" />");
         out.println("</form>");
@@ -77,18 +77,27 @@ public class AltaAutor extends HttpServlet
     */
   public void validateData() {
     boolean flag = false;
-   controlU = new ControlAltaAutor();
+    //controlU = new ControlAltaUsuario();
 
     // Strings from the GET method
-    String idsusstring = request.getParameter("idsuscriptor");
-    int idsus = Integer.parseInt(idsusstring);
+    String nom = request.getParameter("nombre");
+    String lastn = request.getParameter("apellido");
+    String address = request.getParameter("direccion");
+    String tarjeta = request.getParameter("tarjeta");
+    String suscripcion = request.getParameter("suscripcion");
+    String mail = request.getParameter("mail");
+    String passwd = request.getParameter("contrasena");
 
-    flag = controlU.insert(idsus);
+    int itarjeta = Integer.parseInt(tarjeta);
+    int isuscripcion = Integer.parseInt(suscripcion);
+
+    //flag = controlU.insert(nom, lastn, address, itarjeta, isuscripcion, mail, passwd);
 
     if(flag){
         out.println("<h1>Suscriptor agregado</h1>");
         out.println("<a href=\"/SengBytes\">Regresar..</a>");
     }
+
 
     out.println("<br><br><hr>" + new Date().toString() );
     out.println("</body>");
@@ -96,6 +105,3 @@ public class AltaAutor extends HttpServlet
   }
 	
 }
-			
-			
-			

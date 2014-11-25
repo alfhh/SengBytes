@@ -40,6 +40,26 @@
          <servlet-name>IntefazNuevoAutor</servlet-name>
          <url-pattern>/RegistrarAutor</url-pattern>
      </servlet-mapping>
+
+     <servlet>
+     <servlet-name>IntefazNuevoArticulo</servlet-name>
+     <servlet-class>interfaces.NuevoArticulo</servlet-class>
+    </servlet>
+ 
+     <servlet-mapping>
+         <servlet-name>IntefazNuevoArticulo</servlet-name>
+         <url-pattern>/NuevoArticulo</url-pattern>
+     </servlet-mapping>
+
+     <servlet>
+     <servlet-name>InterfazJuez</servlet-name>
+     <servlet-class>interfaces.InterfazJuez</servlet-class>
+    </servlet>
+ 
+     <servlet-mapping>
+         <servlet-name>InterfazJuez</servlet-name>
+         <url-pattern>/IntJuez</url-pattern>
+     </servlet-mapping>
     
     
 </web-app>
