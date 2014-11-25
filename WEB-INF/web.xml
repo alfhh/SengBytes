@@ -60,6 +60,16 @@
          <servlet-name>InterfazJuez</servlet-name>
          <url-pattern>/IntJuez</url-pattern>
      </servlet-mapping>
+
+     <servlet>
+     <servlet-name>CrearRevista</servlet-name>
+     <servlet-class>interfaces.CrearRevista</servlet-class>
+    </servlet>
+ 
+     <servlet-mapping>
+         <servlet-name>CrearRevista</servlet-name>
+         <url-pattern>/CrearRevista</url-pattern>
+     </servlet-mapping>
     
     
 </web-app>

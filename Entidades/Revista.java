@@ -39,7 +39,7 @@ public class Revista extends HttpServlet {
         	Date date = new Date();
 			String ndate = "'"+(dateFormat.format(date)).toString()+"'";
                    
-            query = "INSERT INTO sengbytes.autor (FechaPub)"
+            query = "INSERT INTO sengbytes.revista (FechaPub)"
                 +"VALUES ("+ndate+")";
             st.executeUpdate(query);
        }catch (SQLException e) {
