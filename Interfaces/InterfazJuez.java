@@ -8,11 +8,11 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-//import controles.ControlAltaUsuario; // Conection to the control
+import controles.ControlAltaJuez; // Conection to the control
 
 public class InterfazJuez extends HttpServlet
 {
-    //ControlAltaUsuario controlU;
+    ControlAltaJuez controlU;
     HttpServletResponse respuesta;
     HttpServletRequest request;
     PrintWriter out;
@@ -59,10 +59,8 @@ public class InterfazJuez extends HttpServlet
     */
   public void loadForm() {
 
-        out.println("<form data-abide method=\"GET\" action=\"NuevoArticulo\">");
+        out.println("<form data-abide method=\"GET\" action=\"IntJuez\">");
         out.println("<p> ID Autor <input required type=\"text\" name=\"idAutor\" size=\"15\"></p>");
-        out.println("<p> ID Revista <input  type=\"text\" name=\"apellido\" size=\"15\"></p>");
-        out.println("<p> Contenido <input  type=\"text\" name=\"direccion\" ></p>");
         out.println("<input type=\"hidden\" name=\"check\" value=\"validate\"/>");
         out.println("<input type=\"submit\" name=\"submit\" value=\"Submit\" />");
         out.println("</form>");
@@ -77,21 +75,14 @@ public class InterfazJuez extends HttpServlet
     */
   public void validateData() {
     boolean flag = false;
-    //controlU = new ControlAltaUsuario();
+    controlU = new ControlAltaJuez();
 
     // Strings from the GET method
-    String nom = request.getParameter("nombre");
-    String lastn = request.getParameter("apellido");
-    String address = request.getParameter("direccion");
-    String tarjeta = request.getParameter("tarjeta");
-    String suscripcion = request.getParameter("suscripcion");
-    String mail = request.getParameter("mail");
-    String passwd = request.getParameter("contrasena");
+    String idautstring = request.getParameter("idAutor");
+    int idaut = Integer.parseInt(idautstring);
 
-    int itarjeta = Integer.parseInt(tarjeta);
-    int isuscripcion = Integer.parseInt(suscripcion);
 
-    //flag = controlU.insert(nom, lastn, address, itarjeta, isuscripcion, mail, passwd);
+    flag = controlU.insert(idaut);
 
     if(flag){
         out.println("<h1>Suscriptor agregado</h1>");

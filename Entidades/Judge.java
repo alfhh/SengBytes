@@ -1,23 +1,51 @@
-class Judge { 
-	int initService;
+package entidades;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.sql.*;
+import javax.sql.*;
 
-	  public void aprobarArticulo(Article art, Publication pub){
-	   	try {
-	         String s = "INSERT INTO Articulo (ID, Publicado, IdAutor, IdRevista, NumArt)" +
-	                   " VALUES ("+ art.id + " , '" + art.published + " , '" +
-	                             authorId + " , '" + pub.id + ", '" + art.dateCreation " )"; 
-	         conn.stmt.executeUpdate(s);
-	      }catch (Exception e) { System.out.println ("Cannot update table: Articulo" + e ); }     
-	   }
-   }
 
-     public void rechazarArticulo(Article art){
-	   	try {
-	         String s = "DELETE FROM Registration " +
-                   "WHERE id = " + art.id;
-	         conn.stmt.executeUpdate(s);
-	      }catch (Exception e) { System.out.println ("Cannot update table: Articulo" + e ); }     
-	   }
-   }
+public class Judge extends HttpServlet {
+    Connection          conn = null;
+    Statement           st = null;
+    ResultSet           rs = null;
+    ResultSetMetaData   rmd = null;
+    String              query = null;
+
+    public Judge(){
+        try{
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+        } catch (InstantiationException ie){  
+        } catch (ClassNotFoundException nf){ 
+        } catch (IllegalAccessException iae){
+        }
+
+        try {
+            conn = DriverManager.getConnection("jdbc:mysql://localhost/"+
+                                "SengBytes?user=root&password=r00t");
+            st = conn.createStatement();
+        } catch (SQLException sq1){
+        }
+    }// End createConnection()
+
+    public void create(int idautor){
+        try {
+        	DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        	Date date = new Date();
+			String ndate = "'"+(dateFormat.format(date)).toString()+"'";
+                   
+            query = "INSERT INTO sengbytes.juez (InicioServicio, IDautor)"
+                +"VALUES ("+ndate+","+idautor+")";
+            st.executeUpdate(query);
+       }catch (SQLException e) {
+        System.out.println("Ex: " + e);
+       }
+          
+    }//end create()
+
 }
-
