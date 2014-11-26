@@ -10,7 +10,7 @@ import java.util.Calendar;
 import java.util.Date;
 import controles.ControlNuevoArticulo; // Conection to the control
 
-public class NuevoArticulo extends HttpServlet
+public class AprovarArticulo extends HttpServlet
 {
     ControlNuevoArticulo controlU;
     HttpServletResponse respuesta;
